@@ -1,5 +1,4 @@
-
-name: Yasiya-Md Bot Loop Runner
+name: YASIYA-MD DEPLOY
 
 on:
   workflow_dispatch:
@@ -21,11 +20,9 @@ jobs:
         run: npm install
 
       - name: Run Bot (loop & auto-restart if crash)
-        continue-on-error: true 
         run: |
-          echo "Running Yasiya Md bot in auto-restart mode..."
-          timeout 18000 bash -c 'while true; do npm start || echo "Bot crashed, restarting..."; sleep 2; done'
-
+          echo "Running Yasiya bot in auto-restart mode..."
+          timeout 18000 bash -c 'while true; do node yasiya-md.js || echo "Bot crashed, restarting..."; sleep 2; done'
       - name: Re-Trigger Workflow
         if: always()
         run: |
@@ -33,5 +30,5 @@ jobs:
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/yasiya-md-deploy.yml/dispatches \
-            -d '{"ref":"main"}'
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/yasiya.yml/dispatches \
+            -d '{"ref":"main"}'            -d '{"ref":"main"}'
