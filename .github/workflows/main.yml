@@ -1,18 +1,16 @@
-name: Node.js CI
+name: Auto-Deploy WhatsApp Bot
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:  # allows manual trigger
+  schedule:
+    - cron: '0 */6 * * *'  # runs every 6 hours
 
 jobs:
-  build:
-
+  deploy-bot:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [20.x]
@@ -29,5 +27,5 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Start application
+    - name: Start bot
       run: npm start
