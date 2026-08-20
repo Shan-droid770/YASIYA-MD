@@ -10,16 +10,16 @@ function toBool(v, def = false) {
 module.exports = {
   // Branding
   BOT_NAME: process.env.BOT_NAME || 'SAHAN-MD PRO',
-  OWNER_NAME: process.env.OWNER_NAME || 'Sahan',
+  OWNER_NAME: process.env.OWNER_NAME || 'Sahan Dissanayaka',
 
   // Owner number(s) in international format, comma separated, no + or spaces. e.g. 9471XXXXXXX
-  OWNER_NUMBER: (process.env.OWNER_NUMBER || '').split(',').map(s => s.trim()).filter(Boolean),
+  OWNER_NUMBER: (process.env.OWNER_NUMBER || '94710927228').split(',').map(s => s.trim()).filter(Boolean),
 
   // Command prefix
-  PREFIX: process.env.PREFIX || '.',
+  PREFIX: process.env.PREFIX || '/',
 
   // Behaviour
-  MODE: (process.env.MODE || 'public').toLowerCase(), // 'public' or 'private'
+  MODE: (process.env.MODE || 'private').toLowerCase(), // 'public' or 'private'
   AUTO_READ: toBool(process.env.AUTO_READ, false),
   ALWAYS_ONLINE: toBool(process.env.ALWAYS_ONLINE, true),
 
